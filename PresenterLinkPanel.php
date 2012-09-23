@@ -5,7 +5,7 @@
  * @license MIT
  */
 
-namespace DebugPanel;
+namespace Extras\Debug;
 
 use Nette\Object;
 use Nette\Diagnostics\IBarPanel;
