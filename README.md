@@ -12,7 +12,6 @@ Registration is prefered in <strong>bootstrap</strong> or <strong>BasePresenter<
 
 	new \DebugPanel\PresenterLinkPanel($presenter);
 
+## Example:
 
-
-
-
+<img src="http://imageshack.us/a/img268/5527/screenshot20120923at810.png" alt="Screenshot" />
