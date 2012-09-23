@@ -29,7 +29,7 @@ class PresenterLinkPanel extends Object implements IBarPanel {
 
 	function __construct(Presenter $presenter) {
 		$this->presenter = $presenter;
-		Debugger::addPanel($this);
+		Debugger::addPanel($this, $this->getId());
 	}
 
 	public function getPresenter() {
