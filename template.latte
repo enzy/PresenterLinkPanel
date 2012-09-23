@@ -35,10 +35,19 @@
 	</p>
 
 	<p>
-		<div style="font-weight: bold;">Components:</div>
+		<div style="font-weight: bold;">Attached components:</div>
 		<ul style="margin-left: 25px;">
-			<li n:foreach="$componentMethods as $method">
-				<a href="{$method['method']|editorLink}"><code>{$method['method']->name|substr:15}{if $method['isUsed']} <--{/if}</code></a>
+			<li n:foreach="$usedComponentMethods as $method">
+				<a href="{$method['method']|editorLink}"><code>{$method['method']->name|substr:15}</code></a>
+			</li>
+		</ul>
+	</p>
+
+	<p>
+		<div style="font-weight: bold;">Unused components:</div>
+		<ul style="margin-left: 25px;">
+			<li n:foreach="$unusedComponentMethods as $method">
+				<a href="{$method['method']|editorLink}"><code>{$method['method']->name|substr:15}</code></a>
 			</li>
 		</ul>
 	</p>

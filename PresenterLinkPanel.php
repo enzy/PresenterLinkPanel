@@ -74,7 +74,8 @@ class PresenterLinkPanel extends Object implements IBarPanel {
 		$template->interestedMethods = $this->getInterestedMethodReflections();
 
 		$template->parentClasses = $this->getParentClasses();
-		$template->componentMethods = $this->getComponentMethods();
+		$template->usedComponentMethods = $this->getUsedComponentMethods();
+		$template->unusedComponentMethods = $this->getUnusedComponentMethods();
 
 		return $template->__toString();
 	}
@@ -171,6 +172,24 @@ class PresenterLinkPanel extends Object implements IBarPanel {
 			$cr = $cr->getParentClass();
 		}
 		return $parents;
+	}
+
+	private function getUsedComponentMethods() {
+		$methods = array_filter( $this->getComponentMethods(),
+			function( $var ) {
+				return $var['isUsed'];
+			}
+		);
+		return $methods;
+	}
+
+	private function getUnusedComponentMethods() {
+		$methods = array_filter( $this->getComponentMethods(),
+			function( $var ) {
+				return !$var['isUsed'];
+			}
+		);
+		return $methods;
 	}
 
 	private function getComponentMethods() {
