@@ -52,18 +52,8 @@ class PresenterLinkPanel extends Object implements IBarPanel {
 		$template = self::getEditorLink($this->getTemplateFileName());
 		return Html::el("span")
 			->add(
-				Html::el("span")->onclick("window.location='$presenter';event.stopPropagation();")
-				->style("cursor: pointer; text-align: center; padding: 0 10px; border-left: 1px gray solid; border-right: 1px gray solid;")
-				->title("Open presenter [" . $this->getPresenter()->getName() . "]")
-				->add("P")
-			)->add(
-				Html::el("img")->style("margin: 0; padding: 0 10px;")
-				->src("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAAQCAYAAAAbBi9cAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9oLGQwkDaPz2JIAAAPMSURBVDjLLc/Lb1RlHIfx7/u+55z3nLl1emcivVgteMGCBCGGVJuoCVHDwpUkGl0ajQvDxpgY2LkSBSQxKkoEjBF15YXghYWJorEKxhSV2kLbGUpnOnMuM2fO5T3vzwX+Ac8neRiICsCj6RLMkdb1nY9PVcYFdLuDdHAZyZCLpDdB0tbor8Ww3ll//5uzbPkRtA/ixxS4XwNICCB2YBF24zMMv7X/1My7x7989tr84uhdt002mitROr1r999bdzywiCSKUFEdcM8DLi4Ar15ZAcJ5IJ0BNGMgRh1UoA4//OHp759/at9eycsDRfhtgeJI5/NjJ0vb7rh3beLuCRcbZAetNYV8VoP0L6H73Dl8DYUn0LgJ+W888/qBj1/af2h/Ah2Ngps5JMpAJDOQk548dkL2lAuKCUVB1yNbmlG3E7s7No2d3zxz8RD8n6psBLEBq3/LYFmW4TYEsk4RUkj3RpOXx+7RiGP76Vde0Ah9AckIgml0fHbqyHuFC7OXH7vwW6FHLuFlIlo2kKgNxYJtgWXW7K8/y8v/zomh4Qquf/WdkE4ZllFE2PZJ8BSOLdDf029rJHrj6Fh+9tLSttVk5/STwEcG7JIZE0TQ8oyrqzW2eesWum/3HpZGCqZdASABaAbEQOoCpoXp9TZg99EvfxwuLNfDacbYJxyMOTnHZi23ZaQqZtu3b4PWLZh2HknmAojguVUg8wFTACplK9VlDtc1GYfZ9L1xAJIjRklyIfz6mhjqL5NABs4ZQv8GjCwF0hAlRwKUAlEAtb4KCwo/nP9WkkoEFwIAYEAYVru5bq1JT4xMDgEqZeR7yLEykBFCtw5QBsa6MKCRxQmC9ToatSrveq453FdqAog5MpWgG1HYaGJy/FYNbpBuBYAXIFypIccYcqaEowETgM05Us9jzVqVqzgUm0Yq14hIGVDZ9cnbN9er6wvDgMPRJlBqcpANQwN+1UMu5yCM2uBCgRGw1gioHWnK53s7EyNDV26uLTT+qozeKc9f/PPBq29/mut0XEaakWA9JFiOOFlk501EsceESczJO1RbqbMgMJNib99KFly9dBOa2P3FoJNeqfwzby4uzW9pK5Q4DMQBoDOWCcYz5iUsyjKTC81lUUMbQ7qwcbDWUy6dnfv9xDJjjBvDB6aqH7yJWjA1tXbL2MCUqdL+Picfd1edMKjrRMVcJVBWlg8du8/qMfLFASaLstg7frm6a8/x144WfZw5SgBRH4gGQFQCTeX3EQaOEEogYjMg4yDIAMgCkQF6UZ6mubFztLr3DNFD/7cGEeE/8rvtxQHf/o4AAAAASUVORK5CYII=")
-			)->add(
-				Html::el("span")->onclick("window.location='$template';event.stopPropagation();")
-				->style("cursor: pointer; text-align: center; padding: 0 10px; border-left: 1px gray solid; border-right: 1px gray solid;")
-				->title("Open template [" . $this->getPresenter()->getAction() . "]")
-				->add("T")
+				Html::el("img")
+				->src("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAL+SURBVBgZBcFNaJtlAMDx//ORjzZbs7TJkmowbJcdZqr1oNavCiIIMraBh0IY7uZx8+OiVw9SQZgXp3gR3A5OtIigcxMcylyqVPADh0WNpO2bpk2bvm3e5P163sffT1hrATj/2drDwKXjR7JzwyhhGCVEScIoTlzgAOgBBugDO8DHwA0NAJDE8SMPVA7NvTpfAgAAwAuT/DBM8n3fVMMIDgLDf70BX//jPQtc1AAASRyXJ9ICgLU9Q0oItAClIZOS3JeRKClJKZitjnFPPjf54U/OOxIAwETRRE5DnMBBKHAj2AvA9cH1YWcEWwMDwOtX28wdy3F/MVXSAAAmiiYPpyVeAJ5vkFKgAaVAKlAIlIAEEGaf5r99fmm7jgYAMGFYzo8p3FHMMLBIaVESpBEoCQqLUoBVdPcD3r359z5wXgMAxGFYK0+kcH1LDGBBGYG0gAGFRVtJYsGkDHEYH/vi5cd3JQCACYNaJZ/BCy1CghICCUhAAADCgrUQBwEmDAyABnjuzetjWsl0JiUJjUFiAYsFDAIAAUgJkTEMvGEM7ANogDgIS7lcFinAD3xav/2Iu/4npakCTneHk0+d4dDhSW5f/4jfiwUek1uy67Rfm59/6z0NYMJgXOfSWBOxfONT8tLjxXMNPM9jfX2dZvMrVCrL2dOn0FrR6XTkysrK2+12uySeuHClCFw+Mz/7wvHsFs3vv2WhscDVT77kr1/vMF2pUK/X6XQ69Ho9OpubpI9Ut155qXF0aWnJ1SYMnwGeX7nb4k77Z2aq4wD0y6cYDG+xsLBAoVBgMBiwvb3N5fc/YHf8wW+Ac/l8PqNNFD10+umZsTcaj3Ltmkez2QSgtvs5a9KyuLhILpcDwPM8bJIwtXv7STjJxsaGr00UtTZ7Lldu3iXU0/TdAT98d4v6zAz1ep1ut8vq6iqZTIZarUa5XMYPo6PLy8t7juNsitnGpSJwEahhk6KK9qpToz9O3Fsp6kw6LYSA1qhEdnyCaVpYm9go8H3Hcbqe5539H/YvZvvl5HpaAAAAAElFTkSuQmCC")
 			);
 	}
 
