@@ -1,21 +1,18 @@
 <h1>Presenter <a href="{$presenterClass|editorLink}">{$presenterClass->name}</a></h1>
-<div>
-	
+<div style="text-align: left;">
 	<p>
-		Current action: <code>{$actionName}</code>
+		Template: <a href="{$templateFileName|editorLink}"><code>{$templateFileName|substr:$appDirPathLength}</code></a>
 		<br>
-		Presenter file: <a href="{$presenterClass|editorLink}"><code>{$presenterClass->fileName|substr:$appDirPathLength}</code></a>
-		<br>
-		Template file: <a href="{$templateFileName|editorLink}"><code>{$templateFileName|substr:$appDirPathLength}</code></a>
-		<br>
-		Layout file: <a href="{$layoutFileName|editorLink}"><code>{$layoutFileName|substr:$appDirPathLength}</code></a>
+		Layout: <a href="{$layoutFileName|editorLink}"><code>{$layoutFileName|substr:$appDirPathLength}</code></a>
 	</p>
 
 	<p>
+		<div style="font-weight: bold;">Interesting methods:</div>
+		<ul style="margin-left: 25px;">
 		{foreach $interestedMethods as $method}
-			Method <a href="{$method|editorLink}"><code>{$method->name}</code></a> [{$method->startLine}-{$method->endLine}]
-			<br n:if="!$iterator->last">
+			<li><a href="{$method|editorLink}"><code>{$method->name}</code></a></li>
 		{/foreach}
+		</ul>
 	</p>
 
 	<p>
@@ -24,11 +21,9 @@
 			<li n:foreach="$parentClasses as $class">
 				<a href="{$class["reflection"]|editorLink}"><code>{$class["reflection"]->name}</code></a>
 					{if count($class["methods"]) > 0}
-						<span style="font-size: 80%;">(
-							{foreach $class["methods"] as $method}
-								<a href="{$method|editorLink}">{$method->name}</a>
-							{/foreach}
-						)</span>
+						<span style="font-size: 80%;">
+							({foreach $class["methods"] as $method}<a href="{$method|editorLink}">{$method->name}</a>{sep}, {/sep}{/foreach})
+						</span>
 					{/if}
 			</li>
 		</ul>
@@ -44,11 +39,11 @@
 	</p>
 
 	<p>
-		<div style="font-weight: bold;">Unused components:</div>
-		<ul style="margin-left: 25px;">
+		<div style="font-weight: bold;color:#666">Unused components:&nbsp;<a class="nette-toggler" rel="#unused-component-methods">&#x25ba;</a></div>
+		<ul style="margin-left: 25px;display: none" class="nette-colapsed" id="unused-component-methods">
 			<li n:foreach="$unusedComponentMethods as $method">
 				<a href="{$method['method']|editorLink}"><code>{$method['method']->name|substr:15}</code></a>
-			</li>
-		</ul>
+ 			</li>
+ 		</ul>
 	</p>
 </div>
