@@ -77,6 +77,8 @@ class PresenterLinkPanel extends Object implements IBarPanel {
 		$template->usedComponentMethods = $this->getUsedComponentMethods();
 		$template->unusedComponentMethods = $this->getUnusedComponentMethods();
 
+		$template->components = $this->getPresenter()->getComponents(TRUE);
+
 		return $template->__toString();
 	}
 

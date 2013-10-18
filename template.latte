@@ -30,6 +30,17 @@
 	</p>
 
 	<p>
+		<div style="font-weight: bold;">Components templates:</div>
+		<ul style="margin-left: 25px;">
+		{foreach $components as $component}
+			{if isset($component->template)}
+			<li>{$component->name}: <a href="{$component->template->getFile()|editorLink}"><code>{$component->template->getFile()|substr:$appDirPathLength}</code></a></li>
+			{/if}
+		{/foreach}
+		</ul>
+	</p>
+
+	<p>
 		<div style="font-weight: bold;">Attached components:</div>
 		<ul style="margin-left: 25px;">
 			<li n:foreach="$usedComponentMethods as $method">
